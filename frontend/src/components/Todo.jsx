@@ -21,6 +21,7 @@ const Todo = ({ todo }) => {
     }
 
     return (
+        /* Mark a todo as Done or Undone on clicking the todo */
         <li
             className="task"
             onClick={() => dispatch(toggleTodo(todo._id))}
@@ -44,9 +45,12 @@ const Todo = ({ todo }) => {
                 />
             </form>
 
+            {/* Icon to delete a Todo */}
             <span className="icon" onClick={() => dispatch(deleteTodo(todo._id))}>
                 <i className="fas fa-trash" />
             </span>
+
+            {/* Icon to update a Todo */}
             <span className="icon" onClick={() => setEditing(prevState => !prevState)}>
                 <i className="fas fa-pen" />
             </span>

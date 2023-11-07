@@ -10,6 +10,7 @@ const Tabs = ({ currentTab }) => {
     const dispatch = useDispatch();
 
     return (
+        /* Display All Todos, Active Todos, Completed Todos tabs */
         TABS.map(tab => (
             <button
                 className={tab === currentTab ? 'button selected' : 'button'}

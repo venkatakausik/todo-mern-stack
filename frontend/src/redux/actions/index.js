@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { ADD_NEW_TODO, GET_ALL_TODOS, TOGGLE_TODO, UPDATE_TODO, DELETE_TODO, TOGGLE_TAB } from './type';
+// Backend API URL
 const API_URL = "http://localhost:8000"; 
 
 export const addNewTodo = (data) => async (dispatch) => {
 
     try {
-        const res = await axios.post(`${API_URL}/todos`, {data});
+        const res = await axios.post(`${API_URL}/tasks`, {data});
         dispatch({
             type: ADD_NEW_TODO,
             payload: res.data
@@ -17,7 +18,7 @@ export const addNewTodo = (data) => async (dispatch) => {
 
 export const getAllTodos = () => async (dispatch) => {
     try {
-        const res = await axios.get(`${API_URL}/todos`);
+        const res = await axios.get(`${API_URL}/tasks`);
         dispatch({
             type: GET_ALL_TODOS,
             payload: res.data
@@ -29,7 +30,7 @@ export const getAllTodos = () => async (dispatch) => {
 
 export const toggleTodo = (id) => async (dispatch) => {
     try {
-        const res = await axios.get(`${API_URL}/todos/${id}`);
+        const res = await axios.get(`${API_URL}/tasks/${id}`);
         dispatch({
             type: TOGGLE_TODO,
             payload: res.data
@@ -41,7 +42,7 @@ export const toggleTodo = (id) => async (dispatch) => {
 
 export const updateTodo = (id, data) => async (dispatch) => {
     try {
-        const res = await axios.put(`${API_URL}/todos/${id}`, {data});
+        const res = await axios.put(`${API_URL}/tasks/${id}`, {data});
         dispatch({
             type: UPDATE_TODO,
             payload: res.data
@@ -53,7 +54,7 @@ export const updateTodo = (id, data) => async (dispatch) => {
 
 export const deleteTodo = (id) => async (dispatch) => {
     try {
-        const res = await axios.delete(`${API_URL}/todos/${id}`);
+        const res = await axios.delete(`${API_URL}/tasks/${id}`);
         dispatch({
             type: DELETE_TODO,
             payload: res.data

@@ -3,9 +3,14 @@ import { addTodo, getAllTodos, toggleTodo, updateTodo, deleteTodo } from '../con
 import express from 'express';
 const route = express.Router();
 
-route.post('/todos', addTodo);
-route.get('/todos', getAllTodos);
-route.get('/todos/:id', toggleTodo);
-route.put('/todos/:id', updateTodo);
-route.delete('/todos/:id', deleteTodo);
+// route to create a Todo
+route.post('/tasks', addTodo);
+// route to get all Todo
+route.get('/tasks', getAllTodos);
+// route to mark a Todo as done / undone
+route.get('/tasks/:id', toggleTodo);
+// route to update a Todo name
+route.put('/tasks/:id', updateTodo);
+// route to delete a Todo
+route.delete('/tasks/:id', deleteTodo);
 export default route;

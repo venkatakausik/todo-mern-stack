@@ -1,13 +1,20 @@
 import './App.css';
-import Header from './components/Header';
-import TodoForm from './components/TodoForm';
-import Todos from './components/Todos';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import AddTasks from './pages/AddTasks';
+import Tasks from './pages/Tasks';
+import NoPage from './pages/NoPage';
+import Home from './pages/Home';
 function App() {
   return (
     <div >
-      <Header/>
-      <TodoForm/>
-      <Todos/>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home/>}></Route>
+          <Route path='/tasks' element={<Tasks/>}></Route>
+          <Route path='/addTasks' element={<AddTasks/>}></Route>
+          <Route path='*' element={<NoPage/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

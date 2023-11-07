@@ -4,16 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Todo from "./Todo";
 import Tabs from "./Tabs";
 import { ALL_TODOS, ACTIVE_TODOS, DONE_TODOS } from "../redux/actions/type";
+import {useNavigate} from 'react-router-dom';
 const Todos = () => {
 
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const todos = useSelector(state => state.todos);
     const currentTab = useSelector(state => state.currentTab);
     useEffect(() => {
         dispatch(getAllTodos());
     }, [])
 
+    // filter the todos based on the Tab selected
     const getTodos = () => {
         if(currentTab === ALL_TODOS) {
             return todos;
@@ -28,6 +31,12 @@ const Todos = () => {
         <article>
             <div>
                 <Tabs currentTab={currentTab}/>
+                <button
+                className='button selected'
+                onClick={() => navigate("/addTasks")}
+            >
+                Add Task
+            </button>
             </div>
             <ul>
                 {

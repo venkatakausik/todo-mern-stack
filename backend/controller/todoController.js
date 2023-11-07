@@ -1,5 +1,6 @@
 import Todo from '../model/Todo.js';
 
+// create a Todo 
 export const addTodo = async (request, response) => {
     try{
         const newTodo = await Todo.create({
@@ -13,6 +14,7 @@ export const addTodo = async (request, response) => {
         }
 }
 
+// get all Todos from MongoDB
 export const getAllTodos = async (request, response) => {
     try {
         const allTodos = await Todo.find({}).sort({'createdAt': -1});
@@ -22,6 +24,7 @@ export const getAllTodos = async (request, response) => {
     }
 }
 
+// update a todo to done / undone using todoId obtained from MongoDB
 export const toggleTodo = async (request, response) => {
     try {
         const todoRef = await Todo.findById(request.params.id);
@@ -36,6 +39,7 @@ export const toggleTodo = async (request, response) => {
     }
 }
 
+// update a todo name using todoId obtained from MongoDB
 export const updateTodo = async (request, response) => {
     try {
         await Todo.findOneAndUpdate(
@@ -49,6 +53,7 @@ export const updateTodo = async (request, response) => {
     }
 }
 
+// delete a todo using todoId obtained from MongoDB
 export const deleteTodo = async (request, response) => {
     try {
         const todo = await Todo.findByIdAndDelete(request.params.id);
